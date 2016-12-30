@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="graphdemo.graphdb::myview2" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="myview2"/>
+<localVariables>
+  <variable id="MINIDEPTH" parameter="true">
+    <descriptions defaultDescription="MINIDEPTH"/>
+    <variableProperties datatype="INTEGER" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection/>
+      <defaultRange lowValue="1"/>
+    </variableProperties>
+  </variable>
+  <variable id="MAXDEPTH" parameter="true">
+    <descriptions defaultDescription="MAXDEPTH"/>
+    <variableProperties datatype="INTEGER" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection/>
+      <defaultRange lowValue="2"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:GraphView" id="Graph_1" workspace="graphdemo.graphdb::graphw" action="GET_NEIGHBORHOOD">
+    <viewAttributes>
+      <viewAttribute id="NAME" datatype="NVARCHAR" length="100" measureType="simple"/>
+      <viewAttribute id="DEPTH" datatype="INTEGER" measureType="simple"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <getNeighborhoodParameterization>
+      <startVertices>&quot;Gaia&quot;</startVertices>
+      <direction>outgoing</direction>
+      <minDepthParameter>MINIDEPTH</minDepthParameter>
+      <maxDepthParameter>MAXDEPTH</maxDepthParameter>
+    </getNeighborhoodParameterization>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Graph_1">
+  <attributes>
+    <attribute id="NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Graph_1" columnName="NAME"/>
+    </attribute>
+    <attribute id="DEPTH" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPTH"/>
+      <keyMapping columnObjectName="Graph_1" columnName="DEPTH"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Graph_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="105" y="226"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

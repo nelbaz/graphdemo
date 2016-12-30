@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="graphdemo.graphdb::myview1" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="myview1"/>
+<localVariables/>
+<variableMappings/>
+<dataSources/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:GraphView" id="Graph_1" workspace="graphdemo.graphdb::graphw" action="GET_STRONGLY_CONNECTED_COMPONENTS">
+    <viewAttributes>
+      <viewAttribute id="NAME" datatype="NVARCHAR" length="100" measureType="simple"/>
+      <viewAttribute id="COMPONENT" datatype="INTEGER" measureType="simple"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <getStronglyConnectedComponents/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Graph_1">
+  <attributes>
+    <attribute id="NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Graph_1" columnName="NAME"/>
+    </attribute>
+    <attribute id="COMPONENT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPONENT"/>
+      <keyMapping columnObjectName="Graph_1" columnName="COMPONENT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Graph_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="223"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

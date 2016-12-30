@@ -1,0 +1,5 @@
+GRAPH WORKSPACE "graphdemo.graphdb::graphw"
+EDGE TABLE "graphdemo.graphdb::graphf.RELATIONSHIPS"
+SOURCE COLUMN "SOURCE" TARGET COLUMN "TARGET" KEY COLUMN "KEY"
+VERTEX TABLE "graphdemo.graphdb::graphf.MEMBERS"
+KEY COLUMN "NAME"

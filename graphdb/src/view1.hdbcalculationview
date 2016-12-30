@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:graph="http://www.sap.com/ndb/DataModelGraph.ecore" id="graphdemo.graphdb::view1" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="view1"/>
+<localVariables/>
+<variableMappings/>
+<dataSources/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:GraphView" id="Graph_1" workspace="graphdemo.graphdb::graphw" action="PATTERN_MATCHING">
+    <viewAttributes>
+      <viewAttribute id="NAME" datatype="NVARCHAR" length="100" measureType="simple">
+        <descriptions defaultDescription="NAME"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_1" datatype="NVARCHAR" length="100" measureType="simple">
+        <descriptions defaultDescription="NAME_1"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_2" datatype="NVARCHAR" length="100" measureType="simple">
+        <descriptions defaultDescription="NAME_2"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <patternMatching>
+      <vertexVariable name="V1"/>
+      <vertexVariable name="V2"/>
+      <vertexVariable name="V3"/>
+      <edgeVariable name="E1" sourceVariable="V1" targetVariable="V2"/>
+      <edgeVariable name="E2" sourceVariable="V1" targetVariable="V3"/>
+      <edgeVariable name="E3" sourceVariable="V2" targetVariable="V3"/>
+      <edgeVariable name="E4" sourceVariable="V2" targetVariable="V1"/>
+      <orderBy variable="V1" element="NAME" direction="ASC"/>
+      <orderBy variable="V2" element="NAME" direction="ASC"/>
+      <orderBy variable="V3" element="NAME" direction="ASC"/>
+      <mapping variable="V1" element="NAME" target="NAME"/>
+      <mapping variable="V2" element="NAME" target="NAME_1"/>
+      <mapping variable="V3" element="NAME" target="NAME_2"/>
+      <operation xsi:type="graph:CompoundOperation" operator="AND">
+        <operation xsi:type="graph:PredicateOperation" operator="EQ">
+          <argument>
+            <variableElement variable="E1" element="TYPE"/>
+          </argument>
+          <argument>
+            <constant value="marriedTo" datatype="NVARCHAR"/>
+          </argument>
+        </operation>
+        <operation xsi:type="graph:PredicateOperation" operator="EQ">
+          <argument>
+            <variableElement variable="E4" element="TYPE"/>
+          </argument>
+          <argument>
+            <constant value="marriedTo" datatype="NVARCHAR"/>
+          </argument>
+        </operation>
+        <operation xsi:type="graph:PredicateOperation" operator="EQ">
+          <argument>
+            <variableElement variable="E2" element="TYPE"/>
+          </argument>
+          <argument>
+            <constant value="hasDaughter" datatype="NVARCHAR"/>
+          </argument>
+        </operation>
+        <operation xsi:type="graph:PredicateOperation" operator="EQ">
+          <argument>
+            <variableElement variable="V3" element="TYPE"/>
+          </argument>
+          <argument>
+            <constant value="god" datatype="NVARCHAR"/>
+          </argument>
+        </operation>
+        <operation xsi:type="graph:PredicateOperation" operator="EQ">
+          <argument>
+            <variableElement variable="V3" element="RESIDENCE"/>
+          </argument>
+          <argument>
+            <constant value="Olymp" datatype="NVARCHAR"/>
+          </argument>
+        </operation>
+      </operation>
+    </patternMatching>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Graph_1">
+  <attributes>
+    <attribute id="NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Graph_1" columnName="NAME"/>
+    </attribute>
+    <attribute id="NAME_1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_1"/>
+      <keyMapping columnObjectName="Graph_1" columnName="NAME_1"/>
+    </attribute>
+    <attribute id="NAME_2" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_2"/>
+      <keyMapping columnObjectName="Graph_1" columnName="NAME_2"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Graph_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="224"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="graphdemo.graphdb::graphw" modelObjectNameSpace="Graph_1" modelObjectType="VertexVariable">
+      <upperLeftCorner name="V1" x="166" y="126"/>
+      <upperLeftCorner name="V2" x="328" y="126"/>
+      <upperLeftCorner name="V3" x="246" y="245"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
